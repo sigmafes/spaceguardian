@@ -28,6 +28,9 @@ bulletImg.src = 'bl.png';
 const ship2Img = new Image();
 ship2Img.src = 'ship2.png';
 
+const orbImg = new Image();
+orbImg.src = 'orb.png';
+
 const explosionSound = new Audio('exp.mp3');
 explosionSound.volume = 0.5;
 const loseSound = new Audio('lose.mp3');
@@ -428,8 +431,14 @@ function gameLoop() {
     // Dibujar power-ups
     for (let i = powerUps.length - 1; i >= 0; i--) {
         const powerUp = powerUps[i];
-        ctx.fillStyle = powerUp.type === 'double' ? 'green' : 'blue';
-        ctx.fillRect(powerUp.x, powerUp.y, 16, 16);
+        ctx.save();
+        if (powerUp.type === 'double') {
+            ctx.filter = 'hue-rotate(120deg)'; // Verde
+        } else if (powerUp.type === 'triple') {
+            ctx.filter = 'hue-rotate(240deg)'; // Azul
+        }
+        ctx.drawImage(orbImg, powerUp.x, powerUp.y, 16, 16);
+        ctx.restore();
 
         // Verificar colisión con jugador
         if (!player.dead && player.x < powerUp.x + 16 && player.x + 32 > powerUp.x &&

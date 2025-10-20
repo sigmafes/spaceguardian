@@ -34,7 +34,7 @@ let shipsDestroyed = 0; // Naves destruidas totales
 let currentStage = 1;
 const stageGoals = [100, 220, 350, Infinity];
 const stageConfigs = [
-  { gray: 4000, fast: 7000, red: 13000 },
+  { gray: 4000, fast: 9000, red: 13000 },
   { gray: 4000, fast: 6000, red: 11000 },
   { gray: 3000, fast: 6000, red: 10000 },
   { gray: 3000, fast: 5000, red: 9000 }
