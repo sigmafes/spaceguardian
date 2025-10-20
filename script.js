@@ -163,7 +163,7 @@ if (isAndroid) {
     rightElements.forEach((id, index) => {
         const el = document.getElementById(id);
         el.style.position = 'absolute';
-        el.style.bottom = `${10 + index * 60}px`; // Stack verticalmente
+        el.style.bottom = `${10 + index * 50}px`; // Stack verticalmente con menos espacio
         el.style.right = '10px';
         el.style.top = 'auto';
         el.style.left = 'auto';
