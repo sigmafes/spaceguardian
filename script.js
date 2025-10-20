@@ -148,27 +148,27 @@ if (isAndroid) {
     document.body.style.alignItems = 'center';
     document.body.style.justifyContent = 'flex-start';
     // Mover elementos del GUI a posiciones absolutas abajo y agrandar fuente
-    const leftElements = ['nameChange', 'support', 'audioControls', 'credits'];
-    const rightElements = ['stats'];
+    const leftElements = ['nameChange', 'support', 'audioControls'];
+    const rightElements = ['stats', 'credits'];
     leftElements.forEach((id, index) => {
         const el = document.getElementById(id);
         el.style.position = 'absolute';
-        el.style.bottom = `${10 + index * 50}px`; // Stack verticalmente
+        el.style.bottom = `${10 + index * 60}px`; // Stack verticalmente
         el.style.left = '10px';
         el.style.top = 'auto';
         el.style.right = 'auto';
         el.style.margin = '0';
-        el.style.fontSize = '48px'; // Doble de tamaño
+        el.style.fontSize = '24px'; // Doble de tamaño
     });
     rightElements.forEach((id, index) => {
         const el = document.getElementById(id);
         el.style.position = 'absolute';
-        el.style.bottom = '10px'; // Posición inferior derecha
+        el.style.bottom = `${10 + index * 50}px`; // Stack verticalmente con menos espacio
         el.style.right = '10px';
         el.style.top = 'auto';
         el.style.left = 'auto';
         el.style.margin = '0';
-        el.style.fontSize = '72px'; // 50% más grande
+        el.style.fontSize = '24px'; // Doble de tamaño
     });
     // Ocultar controles de botones en Android
     const controls = document.getElementById('controls');
