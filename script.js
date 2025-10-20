@@ -170,6 +170,11 @@ if (isAndroid) {
         el.style.margin = '0';
         el.style.fontSize = '24px'; // Doble de tamaño
     });
+    // Centrar Music Credits debajo del canvas
+    const credits = document.getElementById('credits');
+    credits.style.left = '50%';
+    credits.style.transform = 'translateX(-50%)';
+    credits.style.right = 'auto';
     // Ocultar controles de botones en Android
     const controls = document.getElementById('controls');
     controls.style.display = 'none';
