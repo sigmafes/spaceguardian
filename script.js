@@ -148,8 +148,8 @@ if (isAndroid) {
     document.body.style.alignItems = 'center';
     document.body.style.justifyContent = 'flex-start';
     // Mover elementos del GUI a posiciones absolutas abajo y agrandar fuente
-    const leftElements = ['nameChange', 'support'];
-    const rightElements = ['stats', 'audioControls', 'credits'];
+    const leftElements = ['nameChange', 'support', 'audioControls'];
+    const rightElements = ['stats', 'credits'];
     leftElements.forEach((id, index) => {
         const el = document.getElementById(id);
         el.style.position = 'absolute';
