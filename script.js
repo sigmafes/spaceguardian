@@ -152,6 +152,35 @@ if (isAndroid) {
         }
         lastTouchEnd = now;
     }, false);
+    // Cambiar layout para colocar GUI abajo del canvas
+    document.body.style.flexDirection = 'column';
+    document.body.style.alignItems = 'center';
+    document.body.style.justifyContent = 'flex-start';
+    // Mover elementos del GUI a posiciones relativas abajo
+    const guiElements = ['nameChange', 'stats', 'audioControls', 'support', 'credits'];
+    guiElements.forEach(id => {
+        const el = document.getElementById(id);
+        el.style.position = 'relative';
+        el.style.top = 'auto';
+        el.style.left = 'auto';
+        el.style.right = 'auto';
+        el.style.bottom = 'auto';
+        el.style.margin = '10px';
+    });
+    // Hacer cruceta doble de grande y abajo del canvas al centro
+    const controls = document.getElementById('controls');
+    controls.style.width = '400px';
+    controls.style.height = '400px';
+    controls.style.position = 'absolute';
+    controls.style.top = '50vh';
+    controls.style.left = '50%';
+    controls.style.transform = 'translateX(-50%)';
+    controls.style.margin = '0';
+    const buttons = controls.querySelectorAll('button');
+    buttons.forEach(btn => {
+        btn.style.width = '100px';
+        btn.style.height = '100px';
+    });
 }
 
 // Teclas presionadas
