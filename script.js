@@ -143,29 +143,30 @@ if (isAndroid) {
     // Ajustar posiciones iniciales
     playerX = 300 - 16;
     playerY = 600 - 32;
-    // Prevenir zoom en doble toque
-    let lastTouchEnd = 0;
-    document.addEventListener('touchend', function(event) {
-        const now = (new Date()).getTime();
-        if (now - lastTouchEnd <= 300) {
-            event.preventDefault();
-        }
-        lastTouchEnd = now;
-    }, false);
     // Cambiar layout para colocar GUI abajo del canvas
     document.body.style.flexDirection = 'column';
     document.body.style.alignItems = 'center';
     document.body.style.justifyContent = 'flex-start';
-    // Mover elementos del GUI a posiciones relativas abajo
-    const guiElements = ['nameChange', 'stats', 'audioControls', 'support', 'credits'];
-    guiElements.forEach(id => {
+    // Mover elementos del GUI a posiciones absolutas abajo
+    const leftElements = ['nameChange', 'support'];
+    const rightElements = ['stats', 'audioControls', 'credits'];
+    leftElements.forEach((id, index) => {
         const el = document.getElementById(id);
-        el.style.position = 'relative';
+        el.style.position = 'absolute';
+        el.style.bottom = `${10 + index * 60}px`; // Stack verticalmente
+        el.style.left = '10px';
+        el.style.top = 'auto';
+        el.style.right = 'auto';
+        el.style.margin = '0';
+    });
+    rightElements.forEach((id, index) => {
+        const el = document.getElementById(id);
+        el.style.position = 'absolute';
+        el.style.bottom = `${10 + index * 60}px`; // Stack verticalmente
+        el.style.right = '10px';
         el.style.top = 'auto';
         el.style.left = 'auto';
-        el.style.right = 'auto';
-        el.style.bottom = 'auto';
-        el.style.margin = '10px';
+        el.style.margin = '0';
     });
     // Hacer cruceta doble de grande y abajo del canvas al centro
     const controls = document.getElementById('controls');
