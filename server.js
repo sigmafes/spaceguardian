@@ -113,9 +113,9 @@ io.on('connection', (socket) => {
         // Power-up drop for normal enemies
         if (enemyType === 'normal') {
           const rand = Math.random();
-          if (rand < 0.05) { // 5% green ball
+          if (rand < 0.08) { // 8% green ball
             io.emit('spawnPowerUp', { type: 'double', x: enemyX, y: enemyY, spawnTime: Date.now() });
-          } else if (rand < 0.06) { // 1% blue ball (additional 1%)
+          } else if (rand < 0.11) { // 3% blue ball (additional 3%)
             io.emit('spawnPowerUp', { type: 'triple', x: enemyX, y: enemyY, spawnTime: Date.now() });
           }
         }
