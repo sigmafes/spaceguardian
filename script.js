@@ -29,17 +29,25 @@ const ship2Img = new Image();
 ship2Img.src = 'ship2.png';
 
 const explosionSound = new Audio('exp.mp3');
+explosionSound.volume = 0.5;
 const loseSound = new Audio('lose.mp3');
+loseSound.volume = 0.5;
 const enemyKillSound = new Audio('enm.mp3');
+enemyKillSound.volume = 0.5;
 const kidesSound = new Audio('kides.mp3');
+kidesSound.volume = 0.5;
 const stage1Music = new Audio('st1.mp3');
 stage1Music.loop = true;
+stage1Music.volume = 0.5;
 const stage2Music = new Audio('st2.mp3');
 stage2Music.loop = true;
+stage2Music.volume = 0.5;
 const stage3Music = new Audio('st3.mp3');
 stage3Music.loop = true;
+stage3Music.volume = 0.5;
 const stage4Music = new Audio('st4.mp3');
 stage4Music.loop = true;
+stage4Music.volume = 0.5;
 
 // Pantalla de inicio
 const startScreen = document.getElementById('startScreen');

@@ -219,6 +219,8 @@ setInterval(() => {
         lastFastEnemySpawn = Date.now();
         lastRedEnemySpawn = Date.now();
         stageTransitionTime = 0;
+        // Emitir stage transition a stage 1
+        io.emit('stageTransition', { stage: currentStage, transitionTime: Date.now() });
         // Respawn todos los jugadores en posición inicial
         for (const playerId in players) {
           players[playerId].dead = false;
