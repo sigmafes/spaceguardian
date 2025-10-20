@@ -80,7 +80,7 @@ function showStartScreen() {
                     canvas.style.borderColor = 'gray';
                 }, 2000);
                 // Start stage 1 music after intro
-                if (musicToggle.checked) stage1Music.play();
+                playMusicIfNeeded();
             }, 1000);
         }, 1000);
     }, 1000);
@@ -119,20 +119,39 @@ const sfxToggle = document.getElementById('sfxToggle');
 // Detectar si es Android
 const isAndroid = /Android/i.test(navigator.userAgent);
 
+// Flag para música
+let musicStarted = false;
+
+function playMusicIfNeeded() {
+    if (!musicStarted && musicToggle.checked) {
+        stage1Music.play().catch(() => {});
+        musicStarted = true;
+    }
+}
+
 // Mostrar controles si es Android
 if (isAndroid) {
     document.getElementById('controls').style.display = 'block';
-    // Ajustar canvas para ocupar de la parte superior a la mitad de la página
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight / 2;
+    // Mantener dimensiones del canvas como en PC (600x600)
+    canvas.width = 600;
+    canvas.height = 600;
     canvas.style.width = '100vw';
     canvas.style.height = '50vh';
     canvas.style.position = 'absolute';
     canvas.style.top = '0';
     canvas.style.left = '0';
     // Ajustar posiciones iniciales
-    playerX = canvas.width / 2 - 16;
-    playerY = canvas.height - 32;
+    playerX = 300 - 16;
+    playerY = 600 - 32;
+    // Prevenir zoom en doble toque
+    let lastTouchEnd = 0;
+    document.addEventListener('touchend', function(event) {
+        const now = (new Date()).getTime();
+        if (now - lastTouchEnd <= 300) {
+            event.preventDefault();
+        }
+        lastTouchEnd = now;
+    }, false);
 }
 
 // Teclas presionadas
