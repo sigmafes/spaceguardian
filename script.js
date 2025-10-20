@@ -147,7 +147,7 @@ if (isAndroid) {
     document.body.style.flexDirection = 'column';
     document.body.style.alignItems = 'center';
     document.body.style.justifyContent = 'flex-start';
-    // Mover elementos del GUI a posiciones absolutas abajo
+    // Mover elementos del GUI a posiciones absolutas abajo y agrandar fuente
     const leftElements = ['nameChange', 'support'];
     const rightElements = ['stats', 'audioControls', 'credits'];
     leftElements.forEach((id, index) => {
@@ -158,6 +158,7 @@ if (isAndroid) {
         el.style.top = 'auto';
         el.style.right = 'auto';
         el.style.margin = '0';
+        el.style.fontSize = '24px'; // Doble de tamaño
     });
     rightElements.forEach((id, index) => {
         const el = document.getElementById(id);
@@ -167,21 +168,11 @@ if (isAndroid) {
         el.style.top = 'auto';
         el.style.left = 'auto';
         el.style.margin = '0';
+        el.style.fontSize = '24px'; // Doble de tamaño
     });
-    // Hacer cruceta doble de grande y abajo del canvas al centro
+    // Ocultar controles de botones en Android
     const controls = document.getElementById('controls');
-    controls.style.width = '400px';
-    controls.style.height = '400px';
-    controls.style.position = 'absolute';
-    controls.style.top = '50vh';
-    controls.style.left = '50%';
-    controls.style.transform = 'translateX(-50%)';
-    controls.style.margin = '0';
-    const buttons = controls.querySelectorAll('button');
-    buttons.forEach(btn => {
-        btn.style.width = '100px';
-        btn.style.height = '100px';
-    });
+    controls.style.display = 'none';
     // Agregar controles táctiles al canvas
     canvas.addEventListener('touchstart', (e) => {
         e.preventDefault();
