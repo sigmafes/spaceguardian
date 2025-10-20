@@ -32,25 +32,25 @@ const orbImg = new Image();
 orbImg.src = 'orb.png';
 
 const explosionSound = new Audio('exp.mp3');
-explosionSound.volume = 0.5;
+explosionSound.volume = 0.25;
 const loseSound = new Audio('lose.mp3');
-loseSound.volume = 0.5;
+loseSound.volume = 0.25;
 const enemyKillSound = new Audio('enm.mp3');
-enemyKillSound.volume = 0.5;
+enemyKillSound.volume = 0.25;
 const kidesSound = new Audio('kides.mp3');
-kidesSound.volume = 0.5;
+kidesSound.volume = 0.25;
 const stage1Music = new Audio('st1.mp3');
 stage1Music.loop = true;
-stage1Music.volume = 0.5;
+stage1Music.volume = 0.25;
 const stage2Music = new Audio('st2.mp3');
 stage2Music.loop = true;
-stage2Music.volume = 0.5;
+stage2Music.volume = 0.25;
 const stage3Music = new Audio('st3.mp3');
 stage3Music.loop = true;
-stage3Music.volume = 0.5;
+stage3Music.volume = 0.25;
 const stage4Music = new Audio('st4.mp3');
 stage4Music.loop = true;
-stage4Music.volume = 0.5;
+stage4Music.volume = 0.25;
 
 // Pantalla de inicio
 const startScreen = document.getElementById('startScreen');
@@ -116,10 +116,46 @@ const stageNumberSpan = document.getElementById('stageNumber');
 const musicToggle = document.getElementById('musicToggle');
 const sfxToggle = document.getElementById('sfxToggle');
 
+// Detectar si es Android
+const isAndroid = /Android/i.test(navigator.userAgent);
+
+// Mostrar controles si es Android
+if (isAndroid) {
+    document.getElementById('controls').style.display = 'block';
+    // Ajustar canvas para ocupar de la parte superior a la mitad de la página
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight / 2;
+    canvas.style.width = '100vw';
+    canvas.style.height = '50vh';
+    canvas.style.position = 'absolute';
+    canvas.style.top = '0';
+    canvas.style.left = '0';
+    // Ajustar posiciones iniciales
+    playerX = canvas.width / 2 - 16;
+    playerY = canvas.height - 32;
+}
+
 // Teclas presionadas
 const keys = {};
 document.addEventListener('keydown', (e) => keys[e.key] = true);
 document.addEventListener('keyup', (e) => keys[e.key] = false);
+
+// Controles táctiles para Android
+if (isAndroid) {
+    const upBtn = document.getElementById('upBtn');
+    const downBtn = document.getElementById('downBtn');
+    const leftBtn = document.getElementById('leftBtn');
+    const rightBtn = document.getElementById('rightBtn');
+
+    upBtn.addEventListener('touchstart', () => keys['w'] = true);
+    upBtn.addEventListener('touchend', () => keys['w'] = false);
+    downBtn.addEventListener('touchstart', () => keys['s'] = true);
+    downBtn.addEventListener('touchend', () => keys['s'] = false);
+    leftBtn.addEventListener('touchstart', () => keys['a'] = true);
+    leftBtn.addEventListener('touchend', () => keys['a'] = false);
+    rightBtn.addEventListener('touchstart', () => keys['d'] = true);
+    rightBtn.addEventListener('touchend', () => keys['d'] = false);
+}
 
 // Conexión al servidor
 socket.on('connect', () => {
@@ -397,7 +433,7 @@ function gameLoop() {
         // Barra de vida
         const maxHp = enemy.type === 'red' ? 9 : 5;
         ctx.fillStyle = 'red';
-        ctx.fillRect(enemy.x, enemy.y - 10, 32, 5);
+                ctx.fillRect(enemy.x, enemy.y - 10, 32, 5);
         ctx.fillStyle = 'green';
         ctx.fillRect(enemy.x, enemy.y - 10, (enemy.hp / maxHp) * 32, 5);
     }

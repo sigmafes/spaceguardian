@@ -23,6 +23,12 @@
     Stage <span id="stageNumber">1</span>
   </div>
   <canvas id="gameCanvas" width="600" height="600"></canvas>
+  <div id="controls" style="display: none; position: relative; margin: 10px auto; width: 200px; height: 200px;">
+    <button id="upBtn" style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 50px; height: 50px;">↑</button>
+    <button id="downBtn" style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 50px; height: 50px;">↓</button>
+    <button id="leftBtn" style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 50px; height: 50px;">←</button>
+    <button id="rightBtn" style="position: absolute; right: 0; top: 50%; transform: translateY(-50%); width: 50px; height: 50px;">→</button>
+  </div>
   <div id="audioControls" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); background: rgba(0,0,0,0.7); padding: 10px; border-radius: 5px; color: white; font-family: Arial;">
     <div>
       <input type="checkbox" id="musicToggle" checked>
