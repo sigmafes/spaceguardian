@@ -146,7 +146,7 @@ io.on('connection', (socket) => {
 // Servir archivos estáticos desde la raíz del proyecto
 app.use(express.static('.'));
 
-const port = 3000;
+const port = process.env.PORT || 3000;
 server.listen(port, () => {
   console.log(`Servidor corriendo en http://localhost:${port}`);
 });

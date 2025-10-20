@@ -1,7 +1,7 @@
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 
-const socket = io('http://localhost:3000'); // Conectar al servidor
+const socket = io(); // Conectar al servidor
 
 // Imágenes
 const playerImg = new Image();
