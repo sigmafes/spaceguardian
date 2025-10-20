@@ -182,6 +182,34 @@ if (isAndroid) {
         btn.style.width = '100px';
         btn.style.height = '100px';
     });
+    // Agregar controles táctiles al canvas
+    canvas.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        const rect = canvas.getBoundingClientRect();
+        const touch = e.touches[0];
+        const x = (touch.clientX - rect.left) / rect.width * canvas.width;
+        const y = (touch.clientY - rect.top) / rect.height * canvas.height;
+        playerX = Math.max(0, Math.min(canvas.width - 32, x - 16));
+        playerY = Math.max(0, Math.min(canvas.height - 32, y - 16));
+    });
+    canvas.addEventListener('touchmove', (e) => {
+        e.preventDefault();
+        const rect = canvas.getBoundingClientRect();
+        const touch = e.touches[0];
+        const x = (touch.clientX - rect.left) / rect.width * canvas.width;
+        const y = (touch.clientY - rect.top) / rect.height * canvas.height;
+        playerX = Math.max(0, Math.min(canvas.width - 32, x - 16));
+        playerY = Math.max(0, Math.min(canvas.height - 32, y - 16));
+    });
+    canvas.addEventListener('touchend', (e) => {
+        // Movimiento se detiene
+    });
+    // Mover botón de música al lado derecho del SFX
+    const audioControls = document.getElementById('audioControls');
+    audioControls.style.display = 'flex';
+    audioControls.style.flexDirection = 'row';
+    audioControls.style.justifyContent = 'space-between';
+    audioControls.style.width = '150px'; // Ajustar ancho
 }
 
 // Teclas presionadas
